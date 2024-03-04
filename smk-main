@@ -1,0 +1,168 @@
+Reset Configuration
+Terminal
+tool user-manager
+database clear
+y
+database clear-log
+y
+
+1. bip > dhcp client > + ether 1
+  ip > addresses > + ether 2 192.168.1/25
+                   + wlan 1 192.168.200.1/24
+  ip > dhcp server > dhcp setup > wlan 1 + ether 2 jadi 100
+
+2. wireless > centang > dll
+
+3. ip > firewall > nat > + > outinterfaces ether 1 > action masquarade
+   filter rules > + > input > src 192.168.100.2 - 192.168.100.50
+                              dst 192.168.100.1 
+                              protocol icmp > action reject
+   
+   forward > src 192.168.100.50 - 192.168.100.100
+   dst 192.168.200.0/24 
+   protocol icmp
+
+4. input log tcp {Akses Router > }
+
+5. forward tcp tkj.skatra-tpi.sch.id action > drop
+
+6. forward tcp .mp3 action > drop
+
+7. forward tcp .mkv action > drop
+
+8. hotspot > admin pass 123 [wlan 1]
+
+9. server profile > use Radius 
+
+10. Radius > + hotspot > secret 123 address 127.0.0.1
+
+11. system > SNTP Client > Enabled > primary > id.pool.ntp.org [apply oke]
+
+12. 192.168.1/userman
+
+13. Router > add > voucher Internet > 127.0.0.1 > 123 > add
+
+14. profiles > voucher Internet 20Gb > price 20.000 
+
+15. Add New Limition > 20G > save Profiles
+
+16. setting > templates > header&Row > save
+
+17. user > batch > number user 20 > 3 > add
+
+!8. Generate > vouchers > add
+
+19. wifi properties
+    ip 192.168.2 atau 51
+    sb 192.168.100.1
+    
+    tes ping 192.168.100.1
+    tes ping 192.168.200.100
+
+20. time firewall > 15-16 jam -16
+
+
+Debian
+
+1. nano /etc/network/interfaces
+
+2. auto enp0s3
+   iface enp0s3 inet static
+   addresses 192.168.100.101/25
+   gateway 192.168.100.1
+
+3. nano /etc/resolv.conf
+
+4. 8.8.8.8
+   8.8.4.4
+
+5. service networking restart
+
+6. ip addr
+
+7. ping google.com
+
+8. nano /etc/apt/sources.list
+
+9. ###
+
+10. deb http://deb.debian.org/debian/ bullseye main contrib non-free
+
+11. apt update
+
+12. apt install apache2 -y
+
+13. apt install php php-mysql php-xml -y
+
+14. apt install mariadb-server -y
+
+15. mysql_secure_installation
+
+16. no
+    yes
+    yes  
+    yes
+    yes 
+    yes
+
+17. apt install phpmyadmin -y
+
+18. 192.168.100.101/phpmyadmin
+
+19. root 123
+
+20. apt install proftpd -y
+
+21. nano /etc/proftpd/proftpd.conf
+
+22. DefaultRoot /var/www/html
+
+23. service proftpd restart
+
+24. chmod 777 /var/www/html
+
+25 firezilla
+
+26. 192.168.100.101 
+    username willsen
+    123
+    21
+
+27. hapus file server
+
+28. upload file wordpress
+
+29. 192.168.100.101/phpmyadmin 
+
+30. login root 
+
+31. Baru
+
+32. db_willsen
+
+33. 192.168.100.101
+
+34. db_willsen
+    root
+    123
+    localhost
+    wp_
+
+35. run
+
+36. Selamat Datang Di Website Willsen
+
+37. nama = willsen
+    pass = 123
+    gmail = willsen@gmail.com
+
+38. login
+
+39. wordpress
+
+
+
+
+
+                 
+ 
